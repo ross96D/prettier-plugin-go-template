@@ -1,7 +1,7 @@
 {
   "name": "prettier-plugin-go-philippta-template",
   "version": "0.0.15",
-  "description": "Prettier plugin for formatting Go & GoHugo templates.",
+  "description": "Prettier plugin for formatting Go & GoHugo templates with an extension for philippta template wrapper.",
   "license": "MIT",
   "repository": {
     "type": "git",
