@@ -1,13 +1,13 @@
 import {
+  AstPath,
   doc,
-  FastPath,
   Parser,
   ParserOptions,
   Printer,
   SupportLanguage,
 } from "prettier";
 import { builders, utils } from "prettier/doc";
-import { parsers as htmlParsers } from "prettier/parser-html";
+// import { parsers as htmlParsers } from "prettier/parser-html";
 import {
   GoBlock,
   GoInline,
@@ -23,7 +23,7 @@ import {
   parseGoTemplate,
 } from "./parse";
 
-const htmlParser = htmlParsers.html;
+// const htmlParser = htmlParsers.html;
 const PLUGIN_KEY = "go-template";
 
 type ExtendedParserOptions = ParserOptions<GoNode> &
@@ -191,11 +191,11 @@ const embed: Exclude<Printer<GoNode>["embed"], undefined> = () => {
   };
 };
 
-type PrintFn = (path: FastPath<GoNode>) => builders.Doc;
+type PrintFn = (path: AstPath<GoNode>) => builders.Doc;
 
 function printMultiBlock(
   node: GoMultiBlock,
-  path: FastPath<GoNode>,
+  path: AstPath<GoNode>,
   print: PrintFn,
 ): builders.Doc {
   return [...path.map(print, "blocks")];
@@ -220,7 +220,7 @@ function isFollowedByNode(node: GoInline): boolean {
 
 function printInline(
   node: GoInline,
-  path: FastPath<GoNode>,
+  path: AstPath<GoNode>,
   options: ExtendedParserOptions,
   print: PrintFn,
 ): builders.Doc {

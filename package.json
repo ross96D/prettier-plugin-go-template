@@ -1,15 +1,14 @@
 {
-  "name": "prettier-plugin-go-template",
+  "name": "prettier-plugin-go-philippta-template",
   "version": "0.0.15",
   "description": "Prettier plugin for formatting Go & GoHugo templates.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NiklasPor/prettier-plugin-go-template"
+    "url": "https://github.com/ross96D/prettier-plugin-go-template"
   },
   "author": {
-    "name": "Niklas Portmann",
-    "email": "niklaspor@gmail.com"
+    "name": "Ross"
   },
   "keywords": [
     "prettier",

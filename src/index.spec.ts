@@ -14,12 +14,15 @@ const prettify = (
   });
 
 const testFolder = join(__dirname, "tests");
+// const testFolder = join(__dirname, "tests/component/");
 const tests = readdirSync(testFolder);
+// const tests = ["1"]
 
 describe("format", () => {
   tests.forEach((test) =>
     it(test, async () => {
       const path = join(testFolder, test);
+      // const path = testFolder;
       const input = readFileSync(join(path, "input.html")).toString();
       const expected = readFileSync(join(path, "expected.html")).toString();
 

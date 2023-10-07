@@ -1,11 +1,13 @@
-# prettier-plugin-go-template
+# prettier-plugin-go-philippta-template
+
+fork of https://github.com/NiklasPor/prettier-plugin-go-template/ to add component and slot keywords
 
 [![NPM Badge](https://img.shields.io/npm/v/prettier-plugin-go-template)](https://www.npmjs.com/package/prettier-plugin-go-template) [![CodeCov Badge](https://img.shields.io/codecov/c/github/niklaspor/prettier-plugin-go-template)](https://codecov.io/gh/NiklasPor/prettier-plugin-go-template) [![Contributions Badge](https://img.shields.io/github/all-contributors/niklaspor/prettier-plugin-go-template)](#contributors-)
 
 Formatter plugin for go template files. The only peer dependency is [prettier](https://www.npmjs.com/package/prettier).
 
 ```bash
-npm install --save-dev prettier prettier-plugin-go-template
+npm install --save-dev prettier prettier-plugin-go-philippta-template
 ```
 
 Starting with Prettier 3 auto-discovery has been removed. Configuration is required ⬇️
@@ -13,7 +15,7 @@ Starting with Prettier 3 auto-discovery has been removed. Configuration is requi
 ```json
 // .prettierrc
 {
-  "plugins": ["prettier-plugin-go-template"]
+  "plugins": ["prettier-plugin-go-philippta-template"]
 }
 ```
 
@@ -76,7 +78,7 @@ To use it with GoHugo and basic `.html` files, you'll have to override the used 
 
 ```json
 {
-  "plugins": ["prettier-plugin-go-template"],
+  "plugins": ["prettier-plugin-go-philippta-template"],
   "overrides": [
     {
       "files": ["*.html"],
@@ -93,7 +95,7 @@ To use it with GoHugo and basic `.html` files, you'll have to override the used 
 Make sure to always have installed **both** dependencies:
 
 - `prettier`
-- `prettier-plugin-go-template`
+- `prettier-plugin-go-philippta-template`
 
 Also make sure that they are installed inside the same scope.
 Install both globally (`npm i -g`) or locally – otherwise prettier may not pick up the plugin.

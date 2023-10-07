@@ -3,7 +3,7 @@ import { createIdGenerator } from "./create-id-generator";
 
 export const parseGoTemplate: Parser<GoNode>["parse"] = (text, options) => {
   const regex =
-    /{{(?<startdelimiter>-|<|%|\/\*)?\s*(?<statement>(?<keyword>if|range|block|with|define|end|else|prettier-ignore-start|prettier-ignore-end)?[\s\S]*?)\s*(?<endDelimiter>-|>|%|\*\/)?}}|(?<unformattableScript><(script)((?!<)[\s\S])*>((?!<\/script)[\s\S])*?{{[\s\S]*?<\/(script)>)|(?<unformattableStyle><(style)((?!<)[\s\S])*>((?!<\/style)[\s\S])*?{{[\s\S]*?<\/(style)>)/g;
+    /{{(?<startdelimiter>-|<|%|\/\*)?\s*(?<statement>(?<keyword>if|range|component|slot|block|with|define|end|else|prettier-ignore-start|prettier-ignore-end)?[\s\S]*?)\s*(?<endDelimiter>-|>|%|\*\/)?}}|(?<unformattableScript><(script)((?!<)[\s\S])*>((?!<\/script)[\s\S])*?{{[\s\S]*?<\/(script)>)|(?<unformattableStyle><(style)((?!<)[\s\S])*>((?!<\/style)[\s\S])*?{{[\s\S]*?<\/(style)>)/g;
   const root: GoRoot = {
     type: "root",
     content: text,
@@ -62,6 +62,11 @@ export const parseGoTemplate: Parser<GoNode>["parse"] = (text, options) => {
       statement,
       id,
     };
+
+    if (keyword === "slot") {
+      current.children[id] = inline;
+      continue;
+    }
 
     if (keyword === "end" || keyword === "prettier-ignore-end") {
       if (current.type !== "block") {
@@ -170,11 +175,12 @@ function aliasNodeContent(current: GoBlock | GoRoot): string {
   Object.entries(current.children)
     .sort(([_, node1], [__, node2]) => node2.index - node1.index)
     .forEach(
-      ([id, node]) =>
-        (result =
+      ([id, node]) => {
+        result =
           result.substring(0, node.index - current.contentStart) +
           id +
-          result.substring(node.index + node.length - current.contentStart)),
+          result.substring(node.index + node.length - current.contentStart)
+      }
     );
 
   return result;
@@ -198,6 +204,8 @@ export type GoBlockKeyword =
   | "with"
   | "define"
   | "else"
+  | "component"
+  | "slot"
   | "prettier-ignore-start"
   | "prettier-ignore-end"
   | "end";
