@@ -8,7 +8,7 @@ const prettify = (
   options: Partial<GoTemplatePlugin.PrettierPluginGoTemplateParserOptions>,
 ) =>
   prettier.format(code, {
-    parser: "go-template" as any,
+    parser: "go-template-philippta" as any,
     plugins: [GoTemplatePlugin],
     ...options,
   });

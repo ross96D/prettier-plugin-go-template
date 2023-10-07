@@ -24,7 +24,7 @@ import {
 } from "./parse";
 
 // const htmlParser = htmlParsers.html;
-const PLUGIN_KEY = "go-template";
+const PLUGIN_KEY = "go-template-philippta";
 
 type ExtendedParserOptions = ParserOptions<GoNode> &
   PrettierPluginGoTemplateParserOptions;
@@ -126,7 +126,7 @@ const embed: Exclude<Printer<GoNode>["embed"], undefined> = () => {
     const html = await textToDoc(node.aliasedContent, {
       ...options,
       parser: "html",
-      parentParser: "go-template",
+      parentParser: "go-template-philippta",
     });
 
     const mapped = utils.stripTrailingHardline(
